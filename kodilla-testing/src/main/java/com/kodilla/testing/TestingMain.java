@@ -10,7 +10,7 @@ public class TestingMain {
         Calculator calculator = new Calculator();
         int a = 5;
         int b = 7;
-        if (calculator.addAToB(a, b) == 13) {
+        if (calculator.addAToB(a, b) == 12) {
             System.out.println("test OK\n");
         } else {
             System.out.println("Error!\n");
