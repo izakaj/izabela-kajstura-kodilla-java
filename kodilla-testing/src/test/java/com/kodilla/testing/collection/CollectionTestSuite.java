@@ -31,7 +31,7 @@ public class CollectionTestSuite {
         //When
         List<Integer> result = oddNumbersExterminator.exterminate(numbers);
         //Then
-        Assert.assertNull(result);
+        Assert.assertTrue(result.isEmpty());
     }
 
     @Test

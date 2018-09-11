@@ -9,18 +9,19 @@ public class OddNumbersExterminator {
 
     public List<Integer> exterminate(List<Integer> numbers) {
 
+        if(evenNumbers.size() != 0){
+            evenNumbers.clear();
+        }
+
         if(numbers.size() == 0){
             System.out.println("The list is empty!");
-            return null;
         } else {
-
             for (Integer number : numbers) {
                 if (number % 2 == 0) {
                     evenNumbers.add(number);
                 }
             }
-
-            return evenNumbers;
         }
+        return evenNumbers;
     }
 }
