@@ -92,10 +92,8 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(square);
 
         //When
-        List<Shape> expectedList= new ArrayList<>();
-        expectedList.add(triangle);
-        expectedList.add(circle);
-        expectedList.add(square);
+        List<Shape> expectedList = new ArrayList<>();
+        expectedList = shapeCollector.showFigures();
 
         //Then
         Assert.assertEquals(expectedList, shapeCollector.getShapes());
