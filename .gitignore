@@ -24,3 +24,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+#Ignore folders
+kodilla-testing/build
+kodilla-testing/out
