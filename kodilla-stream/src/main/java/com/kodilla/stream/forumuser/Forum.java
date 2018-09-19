@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/*import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.iterate.NumbersGenerator;
+import com.kodilla.stream.lambda.Executor;
+import com.kodilla.stream.lambda.ExpressionExecutor;
+import com.kodilla.stream.lambda.Processor;*/
+
 public final class Forum {
     private final List<ForumUser> forumUserList = new ArrayList<>();
 
@@ -33,4 +39,6 @@ public final class Forum {
     public List<ForumUser> getUserList() {
         return forumUserList;
     }
+
+
 }
