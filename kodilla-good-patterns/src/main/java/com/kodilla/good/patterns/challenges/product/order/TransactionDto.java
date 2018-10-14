@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.product.order;
 
 public class TransactionDto {
     private Order order;
@@ -13,7 +13,7 @@ public class TransactionDto {
         return order;
     }
 
-    public boolean isProcessed() {
+    public boolean getIsProcessed() {
         return isProcessed;
     }
 }
