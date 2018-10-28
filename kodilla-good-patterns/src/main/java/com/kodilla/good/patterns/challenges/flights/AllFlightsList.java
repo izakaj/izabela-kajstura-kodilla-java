@@ -2,6 +2,7 @@ package com.kodilla.good.patterns.challenges.flights;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public final class AllFlightsList {
@@ -24,48 +25,48 @@ public final class AllFlightsList {
 
     public List<Flight> findFlightsFrom(String airportOfOrigin){
         List<Flight> allFlightsFrom = getListOfFlights().stream()
-                .filter(f -> f.getFlightFrom().equals(airportOfOrigin))
+                .filter(f -> f.getFrom().equals(airportOfOrigin))
                 .collect(Collectors.toList());
         return allFlightsFrom;
     }
 
     public List<Flight> findFlightsTo(String destinationAirport){
         List<Flight> allFlightsTo = getListOfFlights().stream()
-                .filter(f -> f.getFlightTo().equals(destinationAirport))
+                .filter(f -> f.getTo().equals(destinationAirport))
                 .collect(Collectors.toList());
         return allFlightsTo;
     }
 
-    public Flight findFlightFromAToB(String airportOrOrigin, String destinationAirport){
+    public Optional<Flight> findFlightFromAToB(String airportOrOrigin, String destinationAirport){
         Flight searchedFlight = new Flight(airportOrOrigin, destinationAirport);
 
-        Flight flight = getListOfFlights().stream()
-                .filter(f -> airportOrOrigin.equals(f.getFlightFrom()) &&
-                        destinationAirport.equals(f.getFlightTo()))
-                .findAny()
-                .orElse(new Flight("", ""));
+        Optional<Flight> flight = getListOfFlights().stream()
+                .filter(f -> airportOrOrigin.equals(f.getFrom()) &&
+                        destinationAirport.equals(f.getTo()))
+                .findAny();
 
         return flight;
     }
 
     public List<List<Flight>> indirectFlightsFromAToB(String airportOfOrigin, String destinationAirport){
         List<String> flightThrough = getListOfFlights().stream()
-                .filter(f -> f.getFlightFrom().equals(airportOfOrigin))
-                .map(f -> findFlightsFrom(f.getFlightTo()))
+                .filter(f -> f.getFrom().equals(airportOfOrigin))
+                .map(f -> findFlightsFrom(f.getTo()))
                 .flatMap(f -> f.stream())
-                .filter(f -> f.getFlightTo().equals(destinationAirport))
-                .map(f -> f.getFlightFrom())
+                .filter(f -> f.getTo().equals(destinationAirport))
+                .map(f -> f.getFrom())
                 .collect(Collectors.toList());
         List<List<Flight>> indirectFlights = new LinkedList<>();
         for(String airport : flightThrough){
-            if(!(findFlightFromAToB(airportOfOrigin, airport).equals(new Flight("", "")) ||
-                    findFlightFromAToB(airport, destinationAirport).equals(new Flight("", ""))))
+            if((findFlightFromAToB(airportOfOrigin, airport).isPresent() &&
+                    findFlightFromAToB(airport, destinationAirport).isPresent()))
                         indirectFlights.add(new LinkedList<Flight>(){{
-                            add(findFlightFromAToB(airportOfOrigin, airport));
-                            add(findFlightFromAToB(airport, destinationAirport));
+                            add(findFlightFromAToB(airportOfOrigin, airport).get());
+                            add(findFlightFromAToB(airport, destinationAirport).get());
                         }});
         }
-        System.out.println(indirectFlights);
+        System.out.println(indirectFlights.size() == 0 ?
+                "Sorry, could not find indirect flights." : indirectFlights);
         return indirectFlights;
     }
 

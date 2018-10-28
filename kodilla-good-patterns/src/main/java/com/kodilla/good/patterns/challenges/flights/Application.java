@@ -16,7 +16,13 @@ public class Application {
 
         System.out.println("Indirect flights from Warsaw to Poznan:");
         List<List<Flight>> indirectFlightsFromAToB =
-                allFlightsList.indirectFlightsFromAToB("Warsaw", "Poznan");
+                allFlightsList.indirectFlightsFromAToB("Warsaw",
+                        "Poznan");
+
+        System.out.println("\nIndirect flights from Katowice to New York:");
+        List<List<Flight>> indirectFlightsFromAToB2 =
+                allFlightsList.indirectFlightsFromAToB("Katowice",
+                        "New York");
 
     }
 }
