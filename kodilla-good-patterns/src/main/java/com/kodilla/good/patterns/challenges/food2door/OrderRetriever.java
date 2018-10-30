@@ -6,12 +6,19 @@ import java.util.List;
 
 public class OrderRetriever {
 
+    private ExtraFoodShop extraFoodShop;
+    private GlutenFreeShop glutenFreeShop;
+    private HealthyShop healthyShop;
+
+    public OrderRetriever() {
+        extraFoodShop = new ExtraFoodShop();
+        glutenFreeShop = new GlutenFreeShop();
+        healthyShop = new HealthyShop();
+    }
+
     public Order retrieve(){
         User user = new User(1, "Dumbledore", "Hogwarts",
                 "headmaster@hogwarts.edu.co.uk");
-        ExtraFoodShop extraFoodShop = new ExtraFoodShop();
-        GlutenFreeShop glutenFreeShop = new GlutenFreeShop();
-        HealthyShop healthyShop = new HealthyShop();
         List<OrderedProduct> listOfOrderedProducts = new LinkedList<>();
         listOfOrderedProducts.add(new OrderedProduct(extraFoodShop, new Product(1,
                 "chickpea", new BigDecimal("23.50")), 5));

@@ -8,29 +8,14 @@ public class HealthyShop implements Producer {
 
     private String producerName = "HealthyShop";
     private String producerAddress = "12 Grimmauld Place, London";
-    List<OrderedProduct> productsOrderedFromProducer = new LinkedList<>();
 
     public boolean process(List<OrderedProduct> orderFromProducer){
         System.out.println("HealthyShop has heard your request. You will receive: ");
         for (OrderedProduct orderedProduct : orderFromProducer){
             System.out.println(orderedProduct.getProduct().getProductName() + " - " +
                     orderedProduct.getQuantity());
-            productsOrderedFromProducer.add(orderedProduct);
+            System.out.println("The order is processed by HealthyShop.");
         }
         return true;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HealthyShop that = (HealthyShop) o;
-        return Objects.equals(producerName, that.producerName) &&
-                Objects.equals(producerAddress, that.producerAddress);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(producerName, producerAddress);
     }
 }

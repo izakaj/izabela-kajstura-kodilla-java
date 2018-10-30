@@ -1,10 +1,10 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
-public class User {
-    private int userId;
-    private String username;
-    private String address;
-    private String email;
+public final class User {
+    private final int userId;
+    private final String username;
+    private final String address;
+    private final String email;
 
     public User(int userId, String username, String address, String email) {
         this.userId = userId;

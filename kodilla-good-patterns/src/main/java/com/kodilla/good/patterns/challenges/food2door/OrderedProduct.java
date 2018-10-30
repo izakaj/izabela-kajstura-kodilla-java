@@ -1,8 +1,8 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
 public class OrderedProduct {
-    private Producer producer;
-    private Product product;
+    private final Producer producer;
+    private final Product product;
     private int quantity;
 
     public OrderedProduct(Producer producer, Product product, int quantity) {

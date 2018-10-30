@@ -1,15 +1,17 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class Order {
     private User user;
-    private List<OrderedProduct> listOfOrderedProducts = new LinkedList<>();
+    private List<OrderedProduct> listOfOrderedProducts;
 
     public Order(User user, List<OrderedProduct> listOfOrderedProducts) {
         this.user = user;
-        this.listOfOrderedProducts = listOfOrderedProducts;
+        this.listOfOrderedProducts = Collections.unmodifiableList
+                (new LinkedList(listOfOrderedProducts));
     }
 
     public User getUser() {
@@ -17,6 +19,6 @@ public final class Order {
     }
 
     public List<OrderedProduct> getListOfOrderedProducts() {
-        return listOfOrderedProducts;
+        return Collections.unmodifiableList(listOfOrderedProducts);
     }
 }

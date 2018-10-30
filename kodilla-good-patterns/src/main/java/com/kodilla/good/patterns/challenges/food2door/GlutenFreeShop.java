@@ -8,27 +8,12 @@ public class GlutenFreeShop implements Producer {
 
     private String producerName = "GlutenFreeShop";
     private String producerAddress = "Leavesden, WD25 7LR";
-    List<OrderedProduct> productsOrderedFromProducer = new LinkedList<>();
 
     public boolean process(List<OrderedProduct> orderFromProducer){
         System.out.println("GlutenFreeShop at your service.");
         for (OrderedProduct orderedProduct : orderFromProducer){
-            productsOrderedFromProducer.add(orderedProduct);
+            System.out.println("The order is processed by GlutenFreeShop.");
         }
         return true;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GlutenFreeShop that = (GlutenFreeShop) o;
-        return Objects.equals(producerName, that.producerName) &&
-                Objects.equals(producerAddress, that.producerAddress);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(producerName, producerAddress);
     }
 }
