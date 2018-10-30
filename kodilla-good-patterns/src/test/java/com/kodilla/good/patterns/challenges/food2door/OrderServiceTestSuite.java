@@ -4,8 +4,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class OrderServiceTestSuite {
 
@@ -32,9 +34,10 @@ public class OrderServiceTestSuite {
         OrderService orderService = new OrderService();
 
         //When
-        orderService.process(order);
+        Map<Producer, List<OrderedProduct>> resultMap =
+                orderService.process(order);
 
         //Then
-        Assert.assertTrue(extraFoodShop.getProductsOrderedFromProducer().size() == 2);
+        Assert.assertTrue(resultMap.get(extraFoodShop).size() == 2);
     }
 }
