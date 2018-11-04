@@ -10,7 +10,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task shoppingTask = factory.makeTask(TaskFactory.SHOPPING_TASK);
+        Task shoppingTask = factory.makeTask(TaskClass.SHOPPING_TASK);
         String whatToBuy = ((ShoppingTask) shoppingTask).getWhatToBuy();
         boolean isExecuted = shoppingTask.isTaskExecuted();
 
@@ -25,7 +25,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task paintingTask = factory.makeTask(TaskFactory.PAINTING_TASK);
+        Task paintingTask = factory.makeTask(TaskClass.PAINTING_TASK);
         boolean isExecuted = paintingTask.isTaskExecuted();
         String color = ((PaintingTask) paintingTask).getColor();
 
@@ -40,7 +40,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task drivingTask = factory.makeTask(TaskFactory.DRIVING_TASK);
+        Task drivingTask = factory.makeTask(TaskClass.DRIVING_TASK);
         boolean isExecuted = drivingTask.isTaskExecuted();
         String where = ((DrivingTask) drivingTask).getWhere();
 
@@ -55,7 +55,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task shoppingTask = factory.makeTask(TaskFactory.SHOPPING_TASK);
+        Task shoppingTask = factory.makeTask(TaskClass.SHOPPING_TASK);
         boolean isExecutedBefore = shoppingTask.isTaskExecuted();
         shoppingTask.executeTask();
         boolean isExecutedAfter = shoppingTask.isTaskExecuted();
@@ -69,7 +69,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task paintingTask = factory.makeTask(TaskFactory.PAINTING_TASK);
+        Task paintingTask = factory.makeTask(TaskClass.PAINTING_TASK);
         boolean isExecutedBefore = paintingTask.isTaskExecuted();
         paintingTask.executeTask();
         boolean isExecutedAfter = paintingTask.isTaskExecuted();
@@ -83,7 +83,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task drivingTask = factory.makeTask(TaskFactory.DRIVING_TASK);
+        Task drivingTask = factory.makeTask(TaskClass.DRIVING_TASK);
         boolean isExecutedBefore = drivingTask.isTaskExecuted();
         drivingTask.executeTask();
         boolean isExecutedAfter = drivingTask.isTaskExecuted();
