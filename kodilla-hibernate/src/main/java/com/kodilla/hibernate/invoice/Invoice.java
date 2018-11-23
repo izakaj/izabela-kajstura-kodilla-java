@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 @Table(name = "INVOICES")
 public class Invoice {
-
     @Id
     @GeneratedValue
     @NotNull
