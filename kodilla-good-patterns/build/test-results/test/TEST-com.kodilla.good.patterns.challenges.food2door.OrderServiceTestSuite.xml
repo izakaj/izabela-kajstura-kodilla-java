@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.good.patterns.challenges.food2door.OrderServiceTestSuite" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-11-12T12:16:03" hostname="LAPTOP-73GCB4GA" time="0.03">
+  <properties/>
+  <testcase name="testProcessOrder" classname="com.kodilla.good.patterns.challenges.food2door.OrderServiceTestSuite" time="0.03"/>
+  <system-out><![CDATA[Products from ExtraFoodShop are on their way!
+The order is processed by HealthyShop.
+The order is processed by HealthyShop.
+
+HealthyShop has heard your request. You will receive: 
+buckwheat - 10
+The order is processed by HealthyShop.
+
+GlutenFreeShop at your service.
+The order is processed by GlutenFreeShop.
+The order is processed by GlutenFreeShop.
+
+Success! The order has been processed.
+Total price: 1056.50
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
