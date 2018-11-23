@@ -1,8 +1,11 @@
 package com.kodilla.spring.portfolio;
 
+import javafx.concurrent.Task;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,6 +14,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BoardTestSuite {
+
+    @Autowired
+    @Qualifier("toDo")
+    private TaskList toDoList;
+
+    @Test
+    public void testBean(){
+        System.out.println(toDoList);
+    }
 
     @Test
     public void testAddTask(){
