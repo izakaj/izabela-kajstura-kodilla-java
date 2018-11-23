@@ -8,8 +8,23 @@ import java.util.List;
 @Entity
 @Table(name = "PRODUCTS")
 public class Product {
+
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name = "PRODUCT_ID", unique = true)
     private int id;
+
+    @NotNull
+    @Column(name = "PRODUCT_NAME")
     private String name;
+
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     private List<Item> items = new ArrayList<>();
 
     public Product() {
@@ -19,26 +34,14 @@ public class Product {
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "PRODUCT_ID", unique = true)
     public int getId() {
         return id;
     }
 
-    @NotNull
-    @Column(name = "PRODUCT_NAME")
     public String getName() {
         return name;
     }
 
-    @OneToMany(
-            targetEntity = Item.class,
-            mappedBy = "product",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
     public List<Item> getItems() {
         return items;
     }

@@ -7,11 +7,33 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "ITEMS")
 public class Item {
+
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name = "ITEM_ID", unique = true)
     private int id;
+
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name = "PRODUCT")
     private Product product;
+
+    @NotNull
+    @Column(name = "PRICE")
     private BigDecimal price;
+
+    @NotNull
+    @Column(name = "QUANTITY")
     private int quantity;
+
+    @NotNull
+    @Column(name = "VALUE")
     private BigDecimal value;
+
+    @ManyToOne
+    @JoinColumn(name = "INVOICE")
     private Invoice invoice;
 
     public Item() {
@@ -24,42 +46,26 @@ public class Item {
         this.value = price.multiply(new BigDecimal(quantity));
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ITEM_ID", unique = true)
     public int getId() {
         return id;
     }
 
-    @ManyToOne(
-            cascade = CascadeType.ALL
-    )
-    @JoinColumn(name = "PRODUCT")
     public Product getProduct() {
         return product;
     }
 
-    @NotNull
-    @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
     }
 
-    @NotNull
-    @Column(name = "QUANTITY")
     public int getQuantity() {
         return quantity;
     }
 
-    @NotNull
-    @Column(name = "VALUE")
     public BigDecimal getValue() {
         return value;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "INVOICE")
     public Invoice getInvoice() {
         return invoice;
     }
