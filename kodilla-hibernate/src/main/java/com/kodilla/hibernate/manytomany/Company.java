@@ -11,7 +11,6 @@ import java.util.List;
                 " WHERE LEFT(COMPANY_NAME,3) = :FIRST ",
         resultClass = Company.class
 )
-
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
