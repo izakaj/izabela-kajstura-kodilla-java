@@ -11,6 +11,11 @@ import java.util.List;
                 " WHERE LEFT(COMPANY_NAME,3) = :FIRST ",
         resultClass = Company.class
 )
+@NamedQuery(
+        name = "Company.findCompaniesWithNamesContaining",
+        query = " FROM Company WHERE name LIKE :ARG"
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
