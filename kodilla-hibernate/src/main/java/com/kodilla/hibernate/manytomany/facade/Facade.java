@@ -22,18 +22,21 @@ public final class Facade {
     @Autowired
     EmployeeDao employeeDao;
 
-    public void processSearch(final String partOfCompanyName,
-                              final String partOfEmployeeName) {
+    public List<Company> processSearchCompanies(final String partOfCompanyName) {
             LOGGER.info("Start companies search");
             List<Company> foundCompanies =
                     companyDao.findCompaniesWithNamesContaining(partOfCompanyName);
             System.out.println(foundCompanies);
             LOGGER.info("Companies search done");
+            return foundCompanies;
+    }
 
-            LOGGER.info("Start employees search");
-            List<Employee> foundEmployees =
-                    employeeDao.findEmployeeWithNameContaining(partOfEmployeeName);
-            System.out.println(foundEmployees);
-            LOGGER.info("Employees search done");
+    public List<Employee> processSearchEmployees(final String partOfEmployeeName) {
+        LOGGER.info("Start employees search");
+        List<Employee> foundEmployees =
+                employeeDao.findEmployeeWithNameContaining(partOfEmployeeName);
+        System.out.println(foundEmployees);
+        LOGGER.info("Employees search done");
+        return foundEmployees;
     }
 }
