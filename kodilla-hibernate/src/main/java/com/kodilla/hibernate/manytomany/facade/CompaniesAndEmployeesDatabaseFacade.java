@@ -9,32 +9,32 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import java.util.List;
 
 @Service
-public final class Facade {
+public final class CompaniesAndEmployeesDatabaseFacade {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Facade.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CompaniesAndEmployeesDatabaseFacade.class);
     @Autowired
     CompanyDao companyDao;
     @Autowired
     EmployeeDao employeeDao;
 
-    public List<Company> processSearchCompanies(final String partOfCompanyName) {
+    public List<Company> searchCompaniesWithNamesContaining(final String partOfCompanyName) {
             LOGGER.info("Start companies search");
+            String partOfCompanyName2 = "%" + partOfCompanyName + "%";
             List<Company> foundCompanies =
-                    companyDao.findCompaniesWithNamesContaining(partOfCompanyName);
+                    companyDao.findCompaniesWithNamesContaining(partOfCompanyName2);
             System.out.println(foundCompanies);
             LOGGER.info("Companies search done");
             return foundCompanies;
     }
 
-    public List<Employee> processSearchEmployees(final String partOfEmployeeName) {
+    public List<Employee> searchEmployeesWithNameContaining(final String partOfEmployeeName) {
         LOGGER.info("Start employees search");
+        String partOfEmployeeName2 = "%" + partOfEmployeeName + "%";
         List<Employee> foundEmployees =
-                employeeDao.findEmployeeWithNameContaining(partOfEmployeeName);
+                employeeDao.findEmployeeWithNameContaining(partOfEmployeeName2);
         System.out.println(foundEmployees);
         LOGGER.info("Employees search done");
         return foundEmployees;

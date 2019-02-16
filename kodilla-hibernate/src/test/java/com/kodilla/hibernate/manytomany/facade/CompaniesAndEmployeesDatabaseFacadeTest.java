@@ -4,7 +4,6 @@ import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
 import com.kodilla.hibernate.manytomany.dao.CompanyDao;
 import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +16,17 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FacadeTest {
+public class CompaniesAndEmployeesDatabaseFacadeTest {
     @Autowired
     CompanyDao companyDao;
     @Autowired
     EmployeeDao employeeDao;
     @Autowired
-    Facade facade;
+    CompaniesAndEmployeesDatabaseFacade companiesAndEmployeesDatabaseFacade;
 
 
     @Test
-    public void testFacadeSearchCompanies() {
+    public void testFacadeSearchCompaniesWithNamesContaining() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee annaSmith = new Employee("Anna", "Smith");
@@ -59,7 +58,8 @@ public class FacadeTest {
         employeeDao.save(marthaJones);
 
 
-        List<Company> foundCompanies = facade.processSearchCompanies("%DES%");
+        List<Company> foundCompanies = companiesAndEmployeesDatabaseFacade
+                .searchCompaniesWithNamesContaining("DES");
 
 
         //Then
@@ -109,7 +109,8 @@ public class FacadeTest {
         employeeDao.save(marthaJones);
 
 
-        List<Employee> foundEmployees = facade.processSearchEmployees( "%mit%");
+        List<Employee> foundEmployees = companiesAndEmployeesDatabaseFacade
+                .searchEmployeesWithNameContaining( "mit");
 
 
         //Then
