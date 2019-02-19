@@ -20,21 +20,19 @@ public final class CompaniesAndEmployeesDatabaseFacade {
     @Autowired
     EmployeeDao employeeDao;
 
-    public List<Company> searchCompaniesWithNamesContaining(String partOfCompanyName) {
+    public List<Company> searchCompaniesWithNamesContaining(final String partOfCompanyName) {
             LOGGER.info("Start companies search");
-            partOfCompanyName = "%" + partOfCompanyName + "%";
             List<Company> foundCompanies =
-                    companyDao.findCompaniesWithNamesContaining(partOfCompanyName);
+                    companyDao.findCompaniesWithNamesContaining("%" + partOfCompanyName + "%");
             System.out.println(foundCompanies);
             LOGGER.info("Companies search done");
             return foundCompanies;
     }
 
-    public List<Employee> searchEmployeesWithNameContaining(String partOfEmployeeName) {
+    public List<Employee> searchEmployeesWithNameContaining(final String partOfEmployeeName) {
         LOGGER.info("Start employees search");
-        partOfEmployeeName = "%" + partOfEmployeeName + "%";
         List<Employee> foundEmployees =
-                employeeDao.findEmployeeWithNameContaining(partOfEmployeeName);
+                employeeDao.findEmployeeWithNameContaining("%" + partOfEmployeeName + "%");
         System.out.println(foundEmployees);
         LOGGER.info("Employees search done");
         return foundEmployees;
